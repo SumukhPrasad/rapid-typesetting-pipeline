@@ -21,6 +21,10 @@
 \usepackage{xltxtra}
 
 
+% Fonts
+\usepackage{fontspec} % More fonts
+\usepackage{polyglossia}
+\include{./fonts/fonts.tex}
 
 % PDF properties + Hyperlinks
 \usepackage[hyperfootnotes=false,colorlinks,linkcolor=,urlcolor=link]{hyperref}
@@ -50,11 +54,11 @@
 	% ------- Begin Main Matter --------
 	
 	\mainmatter
-	\include{./userdefined/mainmatter.tex}
+	\include{./userdefined/mainmatterconfig.tex}
 	\foreach \i in {1, 2, 3, ...,100} {%
-	    \edef\FileName{./section/\i/main.tex}%	The % here are necessary to eliminate any
-	    \IfFileExists{\FileName}{%  			spurious spaces that may get inserted
-	       \input{\FileName}%				at these points
+	    \edef\FileName{./sections/section\i/main.tex}%	The % here are necessary to eliminate any
+	    \IfFileExists{\FileName}{%  					spurious spaces that may get inserted
+	       \input{\FileName}%						at these points
 	    }
 	}
 	
