@@ -1,1 +1,3 @@
-# rapid-typesetting-pipeline
+# XeLaTeX-powered Rapid Typesetting Pipeline
+
+

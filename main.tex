@@ -1,0 +1,69 @@
+\include{./userdefined/docsizing.tex}
+
+
+%-----------------%-----------------%-----------------%-----------------%-----------------%-----------------%
+
+% 
+%  Packages
+% ¯¯¯¯¯¯¯¯¯¯
+%
+
+% Debug
+\usepackage{layout}
+\usepackage{layouts}
+\printinunitsof{in}
+\newcommand{\producewithdebug}{%
+	\include{./predefined/debug.tex}
+}
+\usepackage{pgffor} % For-loop, to auto-load all chapters
+\usepackage{texosquery} % compile time seconds and time zone
+\usepackage{datetime2} % Compile time
+\usepackage{xltxtra}
+
+
+
+% PDF properties + Hyperlinks
+\usepackage[hyperfootnotes=false,colorlinks,linkcolor=,urlcolor=link]{hyperref}
+\let\oldhref\href
+\renewcommand{\href}[2]{\oldhref{#1}{\texttt{\underline{#2}}}}
+
+
+%-----------------%-----------------%-----------------%-----------------%-----------------%-----------------%
+
+% 
+%  Miscellaneous command declarations
+% ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+%
+
+%-----------------%-----------------%-----------------%-----------------%-----------------%-----------------%
+
+\begin{document}
+
+	\producewithdebug
+	
+	% ------- Begin Front Matter -------
+	
+	\frontmatter
+	\include{./userdefined/frontmatter.tex}
+	
+	% -------- End Front Matter --------
+	% ------- Begin Main Matter --------
+	
+	\mainmatter
+	\include{./userdefined/mainmatter.tex}
+	\foreach \i in {1, 2, 3, ...,100} {%
+	    \edef\FileName{./section/sec\i.tex}%     The % here are necessary to eliminate any
+	    \IfFileExists{\FileName}{%  spurious spaces that may get inserted
+	       \input{\FileName}%       at these points
+	    }
+	}
+	
+	% -------- End Main Matter ---------
+	% ------- Begin Back Matter --------
+	
+	\backmatter
+	\include{./userdefined/backmatter.tex}
+	
+	% -------- End Main Matter ---------
+	
+\end{document}
