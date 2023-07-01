@@ -52,9 +52,9 @@
 	\mainmatter
 	\include{./userdefined/mainmatter.tex}
 	\foreach \i in {1, 2, 3, ...,100} {%
-	    \edef\FileName{./section/sec\i.tex}%     The % here are necessary to eliminate any
-	    \IfFileExists{\FileName}{%  spurious spaces that may get inserted
-	       \input{\FileName}%       at these points
+	    \edef\FileName{./section/\i/main.tex}%	The % here are necessary to eliminate any
+	    \IfFileExists{\FileName}{%  			spurious spaces that may get inserted
+	       \input{\FileName}%				at these points
 	    }
 	}
 	
